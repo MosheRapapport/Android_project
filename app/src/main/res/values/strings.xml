@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">M&amp;Y</string>
+    <string-array name="packTypes">
+        <item >chose your package type</item>
+        <item>Small package</item>
+        <item>Big package</item>
+        <item>Envelope</item>
+    </string-array>
+</resources>
