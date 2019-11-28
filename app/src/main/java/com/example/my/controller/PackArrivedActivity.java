@@ -1,10 +1,12 @@
-package com.example.my;
+package com.example.my.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.example.my.R;
 
 public class PackArrivedActivity extends AppCompatActivity {
 
