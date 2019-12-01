@@ -6,4 +6,18 @@
         <item>Big package</item>
         <item>Envelope</item>
     </string-array>
+
+
+
+    <string name="start">Start</string>
+    <string name="firstNameEditText">First name</string>
+    <string name="last_nameEditText">Last Name</string>
+    <string name="destinationEditText">Destination Address</string>
+    <string name="pickup_addressEditText">Pickup Address </string>
+    <string name="e_mailEditText">E-mail</string>
+    <string name="phone_numberEditText">Phone Number</string>
+    <string name="enter_your_details">Enter your details:</string>
+    <string name="order_taxiButton">Order Taxi</string>
+    <string name="all_fields_required">All fields are required!</string>
+
 </resources>

@@ -7,6 +7,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.my.R;
+import com.example.my.model.entities.PackType;
+
+import java.time.Year;
 
 public class PackArrivedActivity extends AppCompatActivity {
 
