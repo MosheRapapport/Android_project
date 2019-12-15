@@ -8,7 +8,7 @@
 
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FFFFFF"
@@ -40,33 +40,15 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/pickupAddressEditText"
+                        android:id="@+id/storageLocationEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/marginEditText"
                         android:drawableStart="@drawable/location_icon"
                         android:drawableLeft="@drawable/location_icon"
                         android:ems="10"
-                        android:focusable="false"
-                        android:hint="@string/pickup_addressEditText"
-                        android:inputType="textPostalAddress" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/destination_hint_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/destinationEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/marginEditText"
-                        android:drawableStart="@drawable/location_icon"
-                        android:drawableLeft="@drawable/location_icon"
-                        android:ems="10"
-                        android:focusable="false"
-                        android:hint="@string/destinationEditText"
+                        android:focusable="true"
+                        android:hint="@string/storage_locationEditText"
                         android:inputType="textPostalAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,6 +57,186 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10" />
+
+                <Spinner
+                    android:id="@+id/spinnerPackWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/fragileTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:text="@string/the_package_is_fragileEditText"
+                        android:layout_marginLeft="12dp" />
+
+                    <Switch
+                        android:id="@+id/fragileSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:layout_weight="1"
+                        android:text="Yes/No"
+                        android:layout_marginRight="12dp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/PackageDeliveryDateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/marginEditText"
+                        android:ems="10"
+                        android:hint="@string/PackageDeliveryDateEditText"
+                        android:inputType="date" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/PackageReceiptDateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/marginEditText"
+                        android:ems="10"
+                        android:hint="@string/PackageReceiptDateEditText"
+                        android:inputType="date" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_layout"
+                android:layout_gravity="top"
+                android:layout_marginTop="@dimen/padding_normal"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_normal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/receiptIDeditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/marginEditText"
+                        android:hint="@string/receiptIDeditText" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/recipientDestination_hint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/recipientDestinationEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_margin="@dimen/marginEditText"
+                        android:drawableStart="@drawable/location_icon"
+                        android:drawableLeft="@drawable/location_icon"
+                        android:ems="10"
+                        android:focusable="true"
+                        android:hint="@string/recipientDestinationEditText"
+                        android:inputType="textPostalAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/firstName_hint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/firstNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:drawableLeft="@drawable/person_icon"
+                        android:drawableStart="@drawable/person_icon"
+                        android:ems="10"
+                        android:hint="@string/firstNameEditText"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/lastName_hint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/lastNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:drawableLeft="@drawable/person_icon"
+                        android:drawableStart="@drawable/person_icon"
+                        android:ems="10"
+                        android:hint="@string/last_nameEditText"
+                        android:inputType="textPersonName" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email_hint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/emailEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:drawableLeft="@drawable/email_icon"
+                        android:drawableStart="@drawable/email_icon"
+                        android:ems="10"
+                        android:hint="@string/e_mailEditText"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phoneNumber_hint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/phoneNumberEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:drawableLeft="@drawable/phone_icon"
+                        android:drawableStart="@drawable/phone_icon"
+                        android:ems="10"
+                        android:hint="@string/phone_numberEditText"
+                        android:inputType="phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/addPacageButton"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/rounded_button"
+                    android:textColor="@color/buttonText"
+                    android:text="@string/add_pacageButton" />
             </LinearLayout>
 
 

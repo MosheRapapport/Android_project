@@ -6,18 +6,31 @@
         <item>Big package</item>
         <item>Envelope</item>
     </string-array>
+    <string-array name="packWeight">
+        <item >chose your package weight</item>
+        <item>between 0g to 500g</item>
+        <item>between 500g to 1k</item>
+        <item>between 1k to 5k</item>
+        <item>between 5k to 20k</item>
+    </string-array>
+
 
 
 
     <string name="start">Start</string>
     <string name="firstNameEditText">First name</string>
     <string name="last_nameEditText">Last Name</string>
-    <string name="destinationEditText">Destination Address</string>
-    <string name="pickup_addressEditText">Pickup Address </string>
+    <string name="recipientDestinationEditText">Recipient destination Address</string>
+    <string name="storage_locationEditText">Storage Location </string>
     <string name="e_mailEditText">E-mail</string>
     <string name="phone_numberEditText">Phone Number</string>
     <string name="enter_your_details">Enter your details:</string>
-    <string name="order_taxiButton">Order Taxi</string>
+    <string name="add_pacageButton">Add Pacage</string>
     <string name="all_fields_required">All fields are required!</string>
+    <string name="the_package_is_fragileEditText">The package is fragile</string>
+    <string name="Yes_NoSwitch">Yes/No</string>
+    <string name="PackageDeliveryDateEditText">Delivery date</string>
+    <string name="PackageReceiptDateEditText">Receipt date</string>
+    <string name="receiptIDeditText">Receipt ID</string>
 
 </resources>
