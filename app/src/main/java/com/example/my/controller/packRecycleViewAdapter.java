@@ -39,9 +39,12 @@ public class packRecycleViewAdapter extends RecyclerView.Adapter<packRecycleView
     public void onBindViewHolder(PackViewHolder holder, int position) {
 
         Pack pack = packs.get(position);
-        holder.nameTextView.setText(pack.getRecipient().getFirstName());
-        holder.phoneTextView.setText(pack.getRecipient().getPhoneNumber());
-        //Load the image using Glide
+        holder.FirstNameTextView.setText("Recipient First Name: "+pack.getRecipient().getFirstName());
+        holder.LastNameTextView.setText("Recipient Last Name: "+pack.getRecipient().getLastName());
+        holder.PhoneTextView.setText("Recipient Phone Number: "+pack.getRecipient().getPhoneNumber());
+        holder.PackTypeTextView.setText("Package Type: "+pack.getPackType().toString());
+        holder.PackWeightTextView.setText("Package Weight: "+pack.getPackWeight().toString());
+        holder.StorageLocationTextView.setText("Storage Location: "+pack.getStorageLocation().getAddress());
 
     }
 
@@ -52,13 +55,21 @@ public class packRecycleViewAdapter extends RecyclerView.Adapter<packRecycleView
 
     class PackViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nameTextView;
-        TextView phoneTextView;
+        TextView FirstNameTextView;
+        TextView LastNameTextView;
+        TextView PhoneTextView;
+        TextView PackTypeTextView;
+        TextView PackWeightTextView;
+        TextView StorageLocationTextView;
 
         PackViewHolder(View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.nameTextView);
-            phoneTextView = itemView.findViewById(R.id.phoneTextView);
+            FirstNameTextView = itemView.findViewById(R.id.firstNameView);
+            LastNameTextView = itemView.findViewById(R.id.lastNameView);
+            PhoneTextView = itemView.findViewById(R.id.phoneView);
+            StorageLocationTextView = itemView.findViewById(R.id.storageLocationView);
+            PackTypeTextView = itemView.findViewById(R.id.packTypeView);
+            PackWeightTextView = itemView.findViewById(R.id.packWeightView);
 
             // itemView.setOnClickListener();
             itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {

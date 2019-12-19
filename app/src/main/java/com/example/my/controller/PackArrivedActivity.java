@@ -439,13 +439,15 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
             Firebase_DBManager.addPackToFirebase(pack,new Firebase_DBManager.Action<Long>(){
                 @Override
                 public void onSuccess(Long obj) {
-                    Toast.makeText(getBaseContext(), "We got your Order!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "The Package added!", Toast.LENGTH_LONG).show();
                     addPacageButton.setEnabled(true);
+                    finish();
+
                 }
 
                 @Override
                 public void onFailure(Exception exception) {
-                    Toast.makeText(getBaseContext(), "We are sorry! The order didn't success\n Try Again!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "We are sorry!  didn't success\n Try Again!", Toast.LENGTH_LONG).show();
                     addPacageButton.setEnabled(true);
                 }
 
@@ -453,6 +455,7 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
                 public void onProgress(String status, double percent) {
                 }
             });
+       //     this.finish();
             // Handle clicks for addPacageButton
         }
     }
