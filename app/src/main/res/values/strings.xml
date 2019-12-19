@@ -1,20 +1,18 @@
 <resources>
     <string name="app_name">M&amp;Y</string>
     <string-array name="packTypes">
-        <item >chose your package type</item>
+        <item>chose your package type</item>
         <item>Small package</item>
         <item>Big package</item>
         <item>Envelope</item>
     </string-array>
     <string-array name="packWeight">
-        <item >chose your package weight</item>
+        <item>chose your package weight</item>
         <item>between 0g to 500g</item>
         <item>between 500g to 1k</item>
         <item>between 1k to 5k</item>
         <item>between 5k to 20k</item>
     </string-array>
-
-
 
 
     <string name="start">Start</string>

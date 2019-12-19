@@ -5,6 +5,9 @@ import androidx.annotation.NonNull;
 import com.example.my.model.entities.Pack;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -12,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Firebase_DBManager {
+
 
     public interface Action<T> {
         void onSuccess(T obj);
@@ -53,5 +57,79 @@ public class Firebase_DBManager {
             }
         });
     }
+    private static ChildEventListener pakeRefChildEventListener;
 
-}
+    public static void notifitoPackList(final NotifyDataChange<List<Pack>>notifyDataChange){
+        if (notifyDataChange != null) {
+
+            if (pakeRefChildEventListener != null) {
+                notifyDataChange.onFailure(new Exception("first unNotify student list"));
+                return;
+            }
+            packsList.clear();
+
+            pakeRefChildEventListener= new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Pack pack = dataSnapshot.getValue(Pack.class);
+                    String aKey = dataSnapshot.getKey();
+                    pack.setaKey(aKey);
+                    packsList.add(pack);
+
+
+                    notifyDataChange.OnDataChanged(packsList);
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    Pack pack = dataSnapshot.getValue(Pack.class);
+                    String aKey = dataSnapshot.getKey();
+                    pack.setaKey(aKey);
+
+
+                    for (int i = 0; i < packsList.size(); i++) {
+                        if (packsList.get(i).geta().equals(aKey)) {
+                            packsList.set(i, pack);
+                            break;
+                        }
+                    }
+                    notifyDataChange.OnDataChanged(packsList);
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+                    Pack pack = dataSnapshot.getValue(Pack.class);
+                   String aKey = dataSnapshot.getKey();
+                    pack.setaKey(aKey);
+
+                    for (int i = 0; i < packsList.size(); i++) {
+                        if (packsList.get(i).geta() == aKey) {
+                            packsList.remove(i);
+                            break;
+                        }
+                    }
+                    notifyDataChange.OnDataChanged(packsList);
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    notifyDataChange.onFailure(databaseError.toException());
+                }
+            };
+            PackRef.addChildEventListener(pakeRefChildEventListener);
+        }
+
+    }
+    public static void stopnotifitoPackList() {
+        if (pakeRefChildEventListener != null) {
+            PackRef.removeEventListener(pakeRefChildEventListener);
+            pakeRefChildEventListener = null;
+        }
+
+    }
+};
+

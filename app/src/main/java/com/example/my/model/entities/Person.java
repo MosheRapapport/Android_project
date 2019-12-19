@@ -8,6 +8,18 @@ public class Person {
     private String email;
     private AddressAndLocation address;
 
+    public Person() {
+        id="1";
+        firstName="1";
+        lastName="1";
+        phoneNumber="1";
+        email="1";
+
+
+
+
+    }
+
     public Person(String id, String firstName, String lastName, String phoneNumber, String email, AddressAndLocation address) {
         this.id = id;
         this.firstName = firstName;
