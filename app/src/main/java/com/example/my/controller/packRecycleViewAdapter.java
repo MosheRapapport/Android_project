@@ -73,7 +73,7 @@ public class packRecycleViewAdapter extends RecyclerView.Adapter<packRecycleView
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
                             int position = getAdapterPosition();
-                            String id = packs.get(position).geta();
+                            String id = packs.get(position).getaKey();
 
 
                             return true;

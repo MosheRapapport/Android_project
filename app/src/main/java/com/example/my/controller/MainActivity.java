@@ -1,17 +1,18 @@
 package com.example.my.controller;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.my.R;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
+    private Button GetPackagesButton;
 
 
     @Override
@@ -26,6 +27,19 @@ public class MainActivity extends AppCompatActivity {
                 openPackArrivedActivity();
             }
         });
+
+        GetPackagesButton = (Button)findViewById(R.id.GetPackagesbutton);
+        GetPackagesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPackListactivity();
+            }
+        });
+    }
+
+    public void openPackListactivity(){
+        Intent intent=new Intent(this, PackListactivity.class);
+        startActivity(intent);
     }
 
     public void openPackArrivedActivity(){

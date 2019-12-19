@@ -2,6 +2,7 @@ package com.example.my.controller;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,17 +16,20 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -34,6 +38,7 @@ import com.example.my.model.datasource.Firebase_DBManager;
 import com.example.my.model.entities.AddressAndLocation;
 import com.example.my.model.entities.Exceptions;
 import com.example.my.model.entities.Pack;
+import com.example.my.model.entities.PackStatus;
 import com.example.my.model.entities.PackType;
 import com.example.my.model.entities.PackWeight;
 import com.example.my.model.entities.Person;
@@ -47,10 +52,11 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -72,7 +78,9 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
     private Spinner spinnerPackWeight;
     private Switch fragileSwitch;
     private EditText PackageDeliveryDateEditText;
+    private Button PackageDeliveryDateButton;
     private EditText PackageReceiptDateEditText;
+    private Button PackageReceiptDateButton;
     private TextInputEditText receiptIDeditText;
     private EditText recipientDestinationEditText;
     private EditText firstNameEditText;
@@ -81,7 +89,8 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
     private EditText phoneNumberEditText;
     private Button addPacageButton;
     private Pack pack;
-    private int mYear, mMonth, mDay, mHour, mMinute;
+    private LocalDate localDate;
+    private int mYear, mMonth, mDay;
     private static Firebase_DBManager firebase_dbManager;
     private ProgressDialog progressDialog;
     private Geocoder mGeocoder;
@@ -92,13 +101,6 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pack_arrived);
-
-        firebase_dbManager=new Firebase_DBManager();
-        FirebaseDatabase database =FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello , World!");
-
 
         pack = new Pack();
         findViews();
@@ -336,9 +338,61 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
         fragileSwitch = (Switch)findViewById( R.id.fragileSwitch );
 
         PackageDeliveryDateEditText = (EditText)findViewById( R.id.PackageDeliveryDateEditText );
-        PackageReceiptDateEditText = (EditText)findViewById( R.id.PackageReceiptDateEditText );
-        addPacageButton = (Button)findViewById( R.id.addPacageButton );
+        PackageDeliveryDateButton = (Button)findViewById(R.id.deliveryDatebutton);
+        PackageDeliveryDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
 
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PackArrivedActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int month, int day) {
+
+                                PackageDeliveryDateEditText.setText(day + "/" + (month + 1) + "/" + year);
+                                pack.setDeliveryDate(new Date(year,month,day));
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+
+
+        PackageReceiptDateEditText = (EditText)findViewById( R.id.PackageReceiptDateEditText );
+        PackageReceiptDateButton=(Button)findViewById(R.id.receiptDatebutton);
+        PackageReceiptDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(PackArrivedActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int month, int day) {
+
+                                PackageReceiptDateEditText.setText(day + "/" + (month + 1) + "/" + year);
+                                pack.setReceivedDate(new Date(year,month,day));
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+
+
+
+        addPacageButton = (Button)findViewById( R.id.addPacageButton );
         addPacageButton.setOnClickListener( this );
     }
 
@@ -355,21 +409,44 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
                                         phoneNumberEditText.getText().toString(),
                                         emailEditText.getText().toString(),
                                         new AddressAndLocation()));
-        pack.setStorageLocation(new AddressAndLocation());
+        pack.setPackStatus(PackStatus.IS_WAS_ACCEPTED);
+        pack.setDeliveryName("NO");
+    }
+
+    private boolean isEmptyInput() {
+        return TextUtils.isEmpty(firstNameEditText.getText())||
+                TextUtils.isEmpty(lastNameEditText.getText())||
+                TextUtils.isEmpty(emailEditText.getText())||
+                TextUtils.isEmpty(phoneNumberEditText.getText())||
+                TextUtils.isEmpty(PackageDeliveryDateEditText.getText())||
+                TextUtils.isEmpty(PackageReceiptDateEditText.getText())||
+                TextUtils.isEmpty(receiptIDeditText.getText())||
+                spinnerPackWeight.getSelectedItemPosition()==0||
+                spinnerPackType.getSelectedItemPosition()==0||
+               // TextUtils.isEmpty(recipientDestinationEditText.getText())||
+                TextUtils.isEmpty(storageLocationEditText.getText());
     }
 
     @Override
     public void onClick(View v) {
         if ( v == addPacageButton ) {
+            if(isEmptyInput()){
+                Toast.makeText(getBaseContext(), R.string.all_fields_required,LENGTH_LONG).show();
+                return;
+            }
+            setPack();
+            addPacageButton.setEnabled(false);
             Firebase_DBManager.addPackToFirebase(pack,new Firebase_DBManager.Action<Long>(){
                 @Override
                 public void onSuccess(Long obj) {
-                    Toast.makeText(getBaseContext(), "insert id " + obj, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "We got your Order!", Toast.LENGTH_LONG).show();
+                    addPacageButton.setEnabled(true);
                 }
 
                 @Override
                 public void onFailure(Exception exception) {
-                    Toast.makeText(getBaseContext(), "Error \n" + exception.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "We are sorry! The order didn't success\n Try Again!", Toast.LENGTH_LONG).show();
+                    addPacageButton.setEnabled(true);
                 }
 
                 @Override
@@ -491,6 +568,34 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
             }
         }
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch(requestCode)
+        {
+            case REQUEST_CHECK_SETTINGS:
+            {
+                if(grantResults.length>0)
+                {
+                    if(grantResults[0]==PackageManager.PERMISSION_GRANTED)
+                    {
+
+                    }
+                    else if(grantResults[0]==PackageManager.PERMISSION_DENIED)
+                    {
+
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mFusedLocationProviderClient.removeLocationUpdates(mLocationCallback);
     }
 
 }

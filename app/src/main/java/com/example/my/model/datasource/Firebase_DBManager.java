@@ -88,7 +88,7 @@ public class Firebase_DBManager {
 
 
                     for (int i = 0; i < packsList.size(); i++) {
-                        if (packsList.get(i).geta().equals(aKey)) {
+                        if (packsList.get(i).getaKey().equals(aKey)) {
                             packsList.set(i, pack);
                             break;
                         }
@@ -103,7 +103,7 @@ public class Firebase_DBManager {
                     pack.setaKey(aKey);
 
                     for (int i = 0; i < packsList.size(); i++) {
-                        if (packsList.get(i).geta() == aKey) {
+                        if (packsList.get(i).getaKey() == aKey) {
                             packsList.remove(i);
                             break;
                         }

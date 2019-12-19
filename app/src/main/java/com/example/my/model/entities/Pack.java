@@ -1,6 +1,6 @@
 package com.example.my.model.entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Pack {
     private PackType packType;
@@ -9,15 +9,15 @@ public class Pack {
     private Person recipient;
     private AddressAndLocation storageLocation;
     private PackStatus packStatus;
-    private LocalDate deliveryDate;
-    private LocalDate receivedDate;
+    private Date deliveryDate;
+    private Date receivedDate;
     private String deliveryName;
     private  String aKey;
 
     public Pack() {
     }
 
-    public Pack(PackType packType, PackWeight packWeight, boolean packFragile, Person recipient, AddressAndLocation storageLocation, PackStatus packStatus, LocalDate deliveryDate, LocalDate receivedDate, String deliveryName) {
+    public Pack(PackType packType, PackWeight packWeight, boolean packFragile, Person recipient, AddressAndLocation storageLocation, PackStatus packStatus, Date deliveryDate, Date receivedDate, String deliveryName) {
         this.packType = packType;
         this.packWeight = packWeight;
         this.packFragile = packFragile;
@@ -75,13 +75,13 @@ public class Pack {
 
     public void setPackStatus(PackStatus packStatus) { this.packStatus = packStatus; }
 
-    public LocalDate getDeliveryDate() { return deliveryDate; }
+    public Date getDeliveryDate() { return deliveryDate; }
 
-    public void setDeliveryDate(LocalDate deliveryDate) { this.deliveryDate = deliveryDate; }
+    public void setDeliveryDate(Date deliveryDate) { this.deliveryDate = deliveryDate; }
 
-    public LocalDate getReceivedDate() { return receivedDate; }
+    public Date getReceivedDate() { return receivedDate; }
 
-    public void setReceivedDate(LocalDate receivedDate) { this.receivedDate = receivedDate; }
+    public void setReceivedDate(Date receivedDate) { this.receivedDate = receivedDate; }
 
     public String getDeliveryName() { return deliveryName; }
 

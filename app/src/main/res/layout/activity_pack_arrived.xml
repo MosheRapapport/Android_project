@@ -47,7 +47,7 @@
                         android:drawableStart="@drawable/location_icon"
                         android:drawableLeft="@drawable/location_icon"
                         android:ems="10"
-                        android:focusable="true"
+                        android:focusable="false"
                         android:hint="@string/storage_locationEditText"
                         android:inputType="textPostalAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -87,33 +87,66 @@
                         android:layout_marginRight="12dp" />
                 </LinearLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/PackageDeliveryDateEditText"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="271dp"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/PackageDeliveryDateEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/marginEditText"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:hint="@string/PackageDeliveryDateEditText"
+                            android:inputType="date" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/deliveryDatebutton"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/marginEditText"
-                        android:ems="10"
-                        android:hint="@string/PackageDeliveryDateEditText"
-                        android:inputType="date" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button_white"
+                        android:text="Choose:" />
 
-                <com.google.android.material.textfield.TextInputLayout
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/PackageReceiptDateEditText"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="272dp"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/PackageReceiptDateEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/marginEditText"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:hint="@string/PackageReceiptDateEditText"
+                            android:inputType="date" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/receiptDatebutton"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/marginEditText"
-                        android:ems="10"
-                        android:hint="@string/PackageReceiptDateEditText"
-                        android:inputType="date" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button_white"
+                        android:text="Choose:" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -151,7 +184,7 @@
                         android:drawableStart="@drawable/location_icon"
                         android:drawableLeft="@drawable/location_icon"
                         android:ems="10"
-                        android:focusable="true"
+                        android:focusable="false"
                         android:hint="@string/recipientDestinationEditText"
                         android:inputType="textPostalAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
