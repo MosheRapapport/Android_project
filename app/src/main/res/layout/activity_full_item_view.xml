@@ -11,7 +11,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/gradient"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/XTextView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:background="@drawable/cerclebackround"
+            android:gravity="center"
+            android:text="X"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/HeaderTextView"
@@ -36,11 +48,32 @@
             android:text="lastNameTextView" />
 
         <TextView
+            android:id="@+id/idView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="idTextView" />
+
+        <TextView
             android:id="@+id/phoneView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="phoneTextView" />
+
+        <TextView
+            android:id="@+id/emailView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="emailTextView" />
+
+        <TextView
+            android:id="@+id/personLocationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="personLocationTextView" />
 
         <TextView
             android:id="@+id/storageLocationView"
@@ -62,6 +95,41 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="packWeightTextView" />
+
+        <TextView
+            android:id="@+id/packFragileView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="packFragileTextView" />
+
+        <TextView
+            android:id="@+id/packStatusView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="packStatusTextView" />
+
+        <TextView
+            android:id="@+id/deliveryDateView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="deliveryDateTextView" />
+
+        <TextView
+            android:id="@+id/receivedDateView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="receivedDateTextView" />
+
+        <TextView
+            android:id="@+id/deliveryNameView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="deliveryNameTextView" />
 
     </LinearLayout>
 

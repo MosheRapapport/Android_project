@@ -21,6 +21,7 @@ public class packRecycleViewAdapter extends RecyclerView.Adapter<packRecycleView
     private Context baseContext;
     List<Pack> packs;
 
+
     public packRecycleViewAdapter(Context baseContext, List<Pack> packs) {
         this.packs = packs;
         this.baseContext = baseContext;
@@ -39,6 +40,7 @@ public class packRecycleViewAdapter extends RecyclerView.Adapter<packRecycleView
     public void onBindViewHolder(PackViewHolder holder, int position) {
 
         Pack pack = packs.get(position);
+        holder.HeaderTextView.setText("Package number "+(position+1));
         holder.FirstNameTextView.setText("Recipient First Name: "+pack.getRecipient().getFirstName());
         holder.LastNameTextView.setText("Recipient Last Name: "+pack.getRecipient().getLastName());
         holder.PhoneTextView.setText("Recipient Phone Number: "+pack.getRecipient().getPhoneNumber());
@@ -55,15 +57,18 @@ public class packRecycleViewAdapter extends RecyclerView.Adapter<packRecycleView
 
     class PackViewHolder extends RecyclerView.ViewHolder {
 
+        TextView HeaderTextView;
         TextView FirstNameTextView;
         TextView LastNameTextView;
         TextView PhoneTextView;
         TextView PackTypeTextView;
         TextView PackWeightTextView;
         TextView StorageLocationTextView;
+ 
 
         PackViewHolder(View itemView) {
             super(itemView);
+            HeaderTextView= itemView.findViewById(R.id.HeaderTextView);
             FirstNameTextView = itemView.findViewById(R.id.firstNameView);
             LastNameTextView = itemView.findViewById(R.id.lastNameView);
             PhoneTextView = itemView.findViewById(R.id.phoneView);
@@ -78,9 +83,9 @@ public class packRecycleViewAdapter extends RecyclerView.Adapter<packRecycleView
                 public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
                     menu.setHeaderTitle("Select Action");
 
-                    MenuItem delete = menu.add(Menu.NONE, 1, 1, "Delete");
+                    MenuItem show = menu.add(Menu.NONE, 1, 1, "Show");
 
-                    delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    show.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                         @Override
                         public boolean onMenuItemClick(MenuItem item) {
                             int position = getAdapterPosition();

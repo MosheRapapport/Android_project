@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="buttonText">#fcfbe3</color>
-    <color name="accent_material_light">#9C27B0</color>
+    <color name="accent_material_light">#03a9f4</color>
+    <color name="middle_material_light">#38bffc</color>
     <color name="primary_material_light">#fcfbe3</color>
-    <color name="button_color">#9C27B0</color>
-    <color name="colorPrimaryDark">#9C27B0</color>
+    <color name="button_color">#03a9f4</color>
+    <color name="colorPrimaryDark">#03a9f4</color>
 </resources>

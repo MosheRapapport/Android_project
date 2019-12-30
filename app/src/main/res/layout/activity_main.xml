@@ -8,10 +8,12 @@
 
     <Button
         android:id="@+id/button_Start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="124dp"
+        android:layout_height="46dp"
         android:layout_marginTop="111dp"
+        android:background="@drawable/rounded_button"
         android:text="Add Package"
+        android:textColor="@color/buttonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -21,9 +23,11 @@
 
     <Button
         android:id="@+id/GetPackagesbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="132dp"
+        android:layout_height="49dp"
+        android:background="@drawable/rounded_button"
         android:text="Get Packages"
+        android:textColor="@color/buttonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
