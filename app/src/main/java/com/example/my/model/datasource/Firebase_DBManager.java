@@ -63,7 +63,7 @@ public class Firebase_DBManager {
         if (notifyDataChange != null) {
 
             if (pakeRefChildEventListener != null) {
-                notifyDataChange.onFailure(new Exception("first unNotify student list"));
+                notifyDataChange.onFailure(new Exception("first unNotify list"));
                 return;
             }
             packsList.clear();

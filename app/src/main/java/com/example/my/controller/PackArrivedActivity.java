@@ -409,7 +409,7 @@ public class PackArrivedActivity extends AppCompatActivity implements View.OnCli
                                         phoneNumberEditText.getText().toString(),
                                         emailEditText.getText().toString(),
                                         new AddressAndLocation()));
-        pack.setPackStatus(PackStatus.IS_WAS_ACCEPTED);
+        pack.setPackStatus(PackStatus.SHIPPED);
         pack.setDeliveryName("NO");
     }
 

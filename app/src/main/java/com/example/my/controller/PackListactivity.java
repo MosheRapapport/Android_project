@@ -1,11 +1,11 @@
 package com.example.my.controller;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.my.R;
 import com.example.my.model.datasource.Firebase_DBManager;
@@ -39,7 +39,7 @@ public class PackListactivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Exception exception) {
-                Toast.makeText(getBaseContext(), "error to get students list\n" + exception.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), "error to get packages list\n" + exception.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
